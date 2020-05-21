@@ -113,13 +113,10 @@ def kt_jvm_grpc_library(
     if len(deps) != 1:
         fail("Expected exactly one dep", "deps")
 
-    if flavor == None or flavor == "normal" or flavor == "lite":
-        kt_deps.extend([
-            "@com_github_grpc_grpc_kotlin//stub/src/main/java/io/grpc/kotlin:stub",
-            "@com_github_grpc_grpc_kotlin//stub/src/main/java/io/grpc/kotlin:context",
-        ])
-    else:
-        fail("Flavor must be normal or lite")
+    kt_deps.extend([
+        "@com_github_grpc_grpc_kotlin//stub/src/main/java/io/grpc/kotlin:stub",
+        "@com_github_grpc_grpc_kotlin//stub/src/main/java/io/grpc/kotlin:context",
+    ])
 
     kt_grpc_label = ":%s_DO_NOT_DEPEND_kt_grpc" % name
     kt_grpc_name = kt_grpc_label[1:]
